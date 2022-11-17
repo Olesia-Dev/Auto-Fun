@@ -19,4 +19,12 @@ public class Truck extends Vehicle {
         System.out.print("Woo! Woo!");
     }
 
+    @Override
+    public String toString() {
+        return "Truck{" +
+                super.toString() +
+                "cargoVolume=" + cargoVolume +
+                ", loaded=" + loaded +
+                "}";
+    }
 }
