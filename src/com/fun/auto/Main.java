@@ -13,9 +13,12 @@ public class Main {
 
     public static void main(String[] args) {
         List<Car> cars = DataGenerator.generateCars();
-        for (Car car : cars) {
-            System.out.println(car);
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(i + ": " + cars.get(i));
         }
+//        for (Car car : cars) {
+//            System.out.println(car);
+//        }
 
         List<Truck> trucks = DataGenerator.generateTrucks();
 //        trucks.get(trucks.size() - 1); Get last element
