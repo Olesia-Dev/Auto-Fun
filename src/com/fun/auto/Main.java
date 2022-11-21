@@ -4,6 +4,7 @@ import com.fun.auto.model.Car;
 import com.fun.auto.model.Truck;
 import com.fun.auto.service.DataGenerator;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class Main {
 
         Main.printLastFromLinkedList();
         Main.playWithHashSet(cars);
+        playWithHashMap(trucks);
     }
 
     private static void printLastFromLinkedList() {
@@ -40,6 +42,14 @@ public class Main {
         rustyBuckets.addAll(carList);
         System.out.println("Passed: " + carList.size());
         System.out.println("Saved: " + rustyBuckets.size());
+    }
+
+    private static void playWithHashMap(List<Truck> truckList) {
+        HashMap<String, Truck> makeToTruckMap = new HashMap<>();
+        for (Truck truck : truckList) {
+            makeToTruckMap.put(truck.getColor(), truck);
+        }
+        System.out.println(makeToTruckMap.get("pink"));
     }
 
 }
