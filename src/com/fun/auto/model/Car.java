@@ -2,6 +2,8 @@ package com.fun.auto.model;
 
 import com.fun.auto.model.part.Engine;
 
+import java.util.Objects;
+
 public class Car extends Vehicle {
 
     private int numberOfSeats;
@@ -43,6 +45,21 @@ public class Car extends Vehicle {
 
     public void setClimateControl(boolean climateControl) {
         this.climateControl = climateControl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+        if (!super.equals(o)) return false;
+        return numberOfSeats == car.numberOfSeats
+                && automaticGear == car.automaticGear
+                && climateControl == car.climateControl;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), numberOfSeats, automaticGear, climateControl);
     }
 
     @Override

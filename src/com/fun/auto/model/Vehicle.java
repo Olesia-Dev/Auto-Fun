@@ -2,6 +2,8 @@ package com.fun.auto.model;
 
 import com.fun.auto.model.part.Engine;
 
+import java.util.Objects;
+
 public abstract class Vehicle {
 
     private int numberOfWheels;
@@ -48,6 +50,21 @@ public abstract class Vehicle {
 
     public void setEngine(Engine engine) {
         this.engine = engine;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Vehicle vehicle)) return false;
+        return numberOfWheels == vehicle.numberOfWheels
+                && maxSpeed == vehicle.maxSpeed
+                && Objects.equals(color, vehicle.color)
+                && Objects.equals(engine, vehicle.engine);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberOfWheels, maxSpeed, color, engine);
     }
 
     @Override

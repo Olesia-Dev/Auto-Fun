@@ -18,6 +18,7 @@ public class DataGenerator {
         cars.add(new Car(4, 120, "blue", gasEngine, 4, true, true));
         cars.add(new Car(4, 100, "yellow", gasEngine, 4, true, false));
         cars.add(new Car(4, 130, "red", dieselEngine, 5, false, true));
+        cars.add(new Car(4, 130, "red", dieselEngine, 5, false, true));
         cars.add(new Car(6, 200, "green", dieselEngine, 7, true, true));
         return cars;
     }

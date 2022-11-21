@@ -4,6 +4,7 @@ import com.fun.auto.model.Car;
 import com.fun.auto.model.Truck;
 import com.fun.auto.service.DataGenerator;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class Main {
         }
 
         Main.printLastFromLinkedList();
+        Main.playWithHashSet(cars);
     }
 
     private static void printLastFromLinkedList() {
@@ -31,6 +33,13 @@ public class Main {
         strings.add("first");
         strings.add("second");
         System.out.println(strings.getLast());
+    }
+
+    private static void playWithHashSet(List<Car> carList) {
+        HashSet<Car> rustyBuckets = new HashSet<>();
+        rustyBuckets.addAll(carList);
+        System.out.println("Passed: " + carList.size());
+        System.out.println("Saved: " + rustyBuckets.size());
     }
 
 }
