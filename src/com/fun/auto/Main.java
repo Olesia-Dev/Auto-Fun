@@ -4,10 +4,7 @@ import com.fun.auto.model.Car;
 import com.fun.auto.model.Truck;
 import com.fun.auto.service.DataGenerator;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -31,6 +28,7 @@ public class Main {
         Main.printLastFromLinkedList();
         Main.playWithHashSet(cars);
         playWithHashMap(trucks);
+        iterateThroughCollection(cars);
     }
 
     private static void printLastFromLinkedList() {
@@ -53,6 +51,16 @@ public class Main {
             makeToTruckMap.put(truck.getColor(), truck);
         }
         System.out.println(makeToTruckMap.get("pink"));
+    }
+
+    private static void iterateThroughCollection(Collection<Car> collection) {
+        Iterator<Car> carIterator = collection.iterator();
+        while (carIterator.hasNext()) {
+            Car car = carIterator.next();
+            if (car.getNumberOfSeats() > 4) {
+                System.out.println(car);
+            }
+        }
     }
 
 }
