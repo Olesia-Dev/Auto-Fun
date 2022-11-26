@@ -29,6 +29,7 @@ public class Main {
         Main.playWithHashSet(cars);
         playWithHashMap(trucks);
         iterateThroughCollection(cars);
+        handleExceptions();
     }
 
     private static void printLastFromLinkedList() {
@@ -60,6 +61,17 @@ public class Main {
             if (car.getNumberOfSeats() > 4) {
                 System.out.println(car);
             }
+        }
+    }
+
+    private static void handleExceptions() {
+        Car nullCar = null;
+        try {
+            System.out.println(nullCar.getColor());
+        } catch (NullPointerException exception) {
+            System.out.println(exception.getMessage());
+        } finally {
+            System.out.println("We need to have a car before getting its color");
         }
     }
 
