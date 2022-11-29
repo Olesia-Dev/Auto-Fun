@@ -10,6 +10,9 @@ public class Car extends Vehicle {
     private boolean automaticGear;
     private boolean climateControl;
 
+    public Car(){
+    }
+
     public Car(int numberOfWheels, int maxSpeed, String color, Engine engine,
                int numberOfSeats, boolean automaticGear, boolean climateControl) {
         super(numberOfWheels, maxSpeed, color, engine);

@@ -11,6 +11,9 @@ public abstract class Vehicle {
     private String color;
     private Engine engine;
 
+    public Vehicle(){
+    }
+
     public Vehicle(int numberOfWheels, int maxSpeed, String color, Engine engine) {
         this.numberOfWheels = numberOfWheels;
         this.maxSpeed = maxSpeed;
