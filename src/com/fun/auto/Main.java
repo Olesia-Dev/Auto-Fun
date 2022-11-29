@@ -5,6 +5,8 @@ import com.fun.auto.model.Truck;
 import com.fun.auto.service.DataGenerator;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -30,6 +32,7 @@ public class Main {
         playWithHashMap(trucks);
         iterateThroughCollection(cars);
         handleExceptions();
+        useRegex(cars);
     }
 
     private static void printLastFromLinkedList() {
@@ -72,6 +75,16 @@ public class Main {
             System.out.println(exception.getMessage());
         } finally {
             System.out.println("We need to have a car before getting its color");
+        }
+    }
+
+    private static void useRegex(List<Car> carList) {
+        Pattern colorPattern = Pattern.compile("e+.*[^d]", Pattern.CASE_INSENSITIVE);
+        for (Car car : carList) {
+            Matcher colorMatcher = colorPattern.matcher(car.getColor());
+            if (colorMatcher.find()) {
+                System.out.println(car);
+            }
         }
     }
 
