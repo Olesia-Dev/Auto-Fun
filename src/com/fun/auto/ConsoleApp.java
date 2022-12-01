@@ -47,8 +47,8 @@ public class ConsoleApp {
             } else {
                 System.out.println("File already exists. Those cars are already in the file:");
                 Scanner carScanner = new Scanner(file);
-                while (carScanner.hasNext()) {
-                    System.out.println("\t" + carScanner.nextLine());
+                for (int i = 1; carScanner.hasNext(); i++) {
+                    System.out.println(i + "\t" + carScanner.nextLine());
                 }
             }
         } catch (IOException e) {
