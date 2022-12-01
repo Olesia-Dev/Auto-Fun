@@ -11,11 +11,16 @@ public class ConsoleApp {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Car Creator console application!");
-        Scanner carScanner = new Scanner(System.in);
-        Car car = buildCarInConsole(carScanner);
 
-        System.out.println("You have created new car: " + car);
-        writeCarIntoFile(car);
+        File carFile = new File("car.txt");
+
+        readOrCreateFile(carFile);
+
+        Scanner carScanner = new Scanner(System.in);
+        Car consoleCar = buildCarInConsole(carScanner);
+        System.out.println("You have created new car: " + consoleCar);
+
+        writeCarIntoFile(carFile, consoleCar);
     }
 
     private static Car buildCarInConsole(Scanner scanner) {
@@ -35,21 +40,33 @@ public class ConsoleApp {
         return car;
     }
 
-    private static void writeCarIntoFile(Car car) {
-        File carFile = new File("car.txt");
+    private static void readOrCreateFile(File file) {
         try {
-            if (carFile.createNewFile()) {
-                System.out.println("File created: " + carFile.getAbsolutePath());
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getAbsolutePath());
             } else {
-                System.out.println("File already exists.");
+                System.out.println("File already exists. Those cars are already in the file:");
+                Scanner carScanner = new Scanner(file);
+                while (carScanner.hasNext()) {
+                    System.out.println("\t" + carScanner.nextLine());
+                }
             }
-            FileWriter carWriter = new FileWriter(carFile);
-            carWriter.write(car.toString());
-            carWriter.close();
         } catch (IOException e) {
-            System.out.println("File error!");
+            System.out.println("File creation error!");
             e.printStackTrace();
         }
+    }
+
+    private static void writeCarIntoFile(File file, Car car) {
+        try {
+            FileWriter carWriter = new FileWriter(file, true);
+            carWriter.write(car.toString() + "\n");
+            carWriter.close();
+        } catch (IOException e) {
+            System.out.println("File writing error!");
+            e.printStackTrace();
+        }
+        System.out.println("File size in bytes: " + file.length());
     }
 
 }
