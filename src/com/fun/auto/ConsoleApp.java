@@ -11,16 +11,28 @@ public class ConsoleApp {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Car Creator console application!");
-
         File carFile = new File("car.txt");
-
         readOrCreateFile(carFile);
+        processConsoleCarCreation(carFile);
+    }
 
+    private static void processConsoleCarCreation(File carFile) {
         Scanner carScanner = new Scanner(System.in);
-        Car consoleCar = buildCarInConsole(carScanner);
-        System.out.println("You have created new car: " + consoleCar);
-
-        writeCarIntoFile(carFile, consoleCar);
+        System.out.println("Let's create a new car?");
+        String answer = carScanner.nextLine().toLowerCase();
+        switch (answer) {
+            case "yes":
+                Car additionalCar = buildCarInConsole(carScanner);
+                writeCarIntoFile(carFile, additionalCar);
+                processConsoleCarCreation(carFile);
+                break;
+            case "no":
+                System.out.println("Ok! Thanks!");
+                break;
+            default:
+                System.out.println("Didn't get your answer...");
+                processConsoleCarCreation(carFile);
+        }
     }
 
     private static Car buildCarInConsole(Scanner scanner) {
